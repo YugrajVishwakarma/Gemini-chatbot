@@ -1,6 +1,6 @@
 """
-Author: Bisnu Ray
-Telegram: https://t.me/SmartBisnuBio
+Author: Yugraj Vishwakarma
+Telegram: https://t.me/Scorpion_Yug
 """
 
 import os
@@ -14,11 +14,11 @@ from aiogram.types import ParseMode, ChatActions
 from aiogram.utils import executor
 
 # Create the bot object.
-bot = Bot(token='12345678:AAGNaKh6J5jrK4og9FWkiGR1jifbZjTniik')
+bot = Bot(token='6381398610:AAHwPW_jzTYW5ZOSkjxsn1LCu5l0zfz4QJQ')
 dp = Dispatcher(bot)
 
 # Use os.getenv for the Google API key
-GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
+GOOGLE_API_KEY = os.getenv('AIzaSyADvbAVI3oETadDSBIzNbWfaIfj7h-DhSU')
 
 # Configure the API key for Gemini
 genai.configure(api_key=GOOGLE_API_KEY)
@@ -31,7 +31,7 @@ async def gemi_handler(message: types.Message):
     loading_message = None  # Initialize loading_message outside the try block
     try:
         # Display a loading message
-        loading_message = await message.answer("<b>Generating response, please wait...</b>", parse_mode='html')
+        loading_message = await message.answer("<b>Ruk jaa bhai de raha hu, tera jabab</b>", parse_mode='html')
 
         # Check if there's a prompt or not
         if len(message.text.strip()) <= 5:  
@@ -47,10 +47,10 @@ async def gemi_handler(message: types.Message):
 
         response_text = response.text
 
-        # Split the response if it's over 4000 characters
-        if len(response_text) > 4000:
+        # Split the response if it's over 10000 characters
+        if len(response_text) > 10000:
             # Split the response into parts
-            parts = [response_text[i:i+4000] for i in range(0, len(response_text), 4000)]
+            parts = [response_text[i:i+10000] for i in range(0, len(response_text), 10000)]
             for part in parts:
                 await message.answer(part, parse_mode='markdown')
         else:

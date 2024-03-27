@@ -26,16 +26,16 @@ genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-pro-vision')
 
 
-@dp.message_handler(commands=['gemi'])
+@dp.message_handler(commands=['hacker, @SudoWORLD_bot, SudoWorld_Bot, chat, batao'])
 async def gemi_handler(message: types.Message):
     loading_message = None  # Initialize loading_message outside the try block
     try:
         # Display a loading message
-        loading_message = await message.answer("<b>Ruk jaa bhai de raha hu, tera jabab</b>", parse_mode='html')
+        loading_message = await message.answer("<b>Ruk jaa bhai de raha hu, tera jabab...</b>", parse_mode='html')
 
         # Check if there's a prompt or not
         if len(message.text.strip()) <= 5:  
-            await message.answer("<b>Please provide a prompt after the command.</b>", parse_mode='html')
+            await message.answer("<b>Please provide a prompt after the command...</b>", parse_mode='html')
             return
 
         # Get the text following the /gemi command as the prompt
@@ -65,7 +65,7 @@ async def gemi_handler(message: types.Message):
             await bot.delete_message(chat_id=loading_message.chat.id, message_id=loading_message.message_id)
 
 
-@dp.message_handler(commands=['imgai'])
+@dp.message_handler(commands=['image, dekho'])
 async def generate_from_image(message: types.Message):
     user_id = message.from_user.id
 
@@ -73,7 +73,7 @@ async def generate_from_image(message: types.Message):
         image = message.reply_to_message.photo[-1]
         prompt = message.get_args() or message.reply_to_message.caption or "Describe this image."
 
-        processing_message = await message.answer("<b>Generating response, please wait...</b>", parse_mode='html')
+        processing_message = await message.answer("<b>Dekh raha hu bhai thhoda intezaar kar...</b>", parse_mode='html')
 
         try:
             # Fetch image from Telegram
@@ -88,7 +88,7 @@ async def generate_from_image(message: types.Message):
             await message.answer(response_text, parse_mode=None)
         except Exception as e:
             logging.error(f"Error during image analysis: {e}")
-            await message.answer("<b>An error occurred. Please try again.</b>", parse_mode='html')
+            await message.answer("<b>Sorry 😔 bro meri aankhein foot gyi 😭</b>", parse_mode='html')
         finally:
             await bot.delete_message(chat_id=processing_message.chat.id, message_id=processing_message.message_id)
     else:

@@ -13,6 +13,8 @@ from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.types import ParseMode, ChatActions
 from aiogram.utils import executor
 
+os.system("pip install aiogram==2.25.1 Pillow google-generativeai")
+
 # Create the bot object.
 bot = Bot(token='6381398610:AAHwPW_jzTYW5ZOSkjxsn1LCu5l0zfz4QJQ')
 dp = Dispatcher(bot)
@@ -94,7 +96,8 @@ async def generate_from_image(message: types.Message):
     else:
         await message.answer("<b>Please reply to an image with this command.</b>", parse_mode='html')
 
-
+os.system(python gemini.py)
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
+    

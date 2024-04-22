@@ -60,7 +60,7 @@ async def gemi_handler(message: types.Message):
             await message.answer(response_text, parse_mode='markdown')
 
     except Exception as e:
-        await message.answer(f"An error occurred: {str(e)}")
+        await message.answer(f"Sorry bhai system mein koi kharabi aai hai toh mein jabab nahi de sakta: {str(e)}")
     finally:
         # Delete the loading message regardless of whether an error occurred or not
         if loading_message:
@@ -89,14 +89,14 @@ async def generate_from_image(message: types.Message):
             # Send the response as plain text
             await message.answer(response_text, parse_mode=None)
         except Exception as e:
-            logging.error(f"Error during image analysis: {e}")
+            logging.error(f"Sorry bhai aankhen foot jaane ke karan mein tumhe ab jabab nahi de sakta 😭: {e}")
             await message.answer("<b>Sorry 😔 bro meri aankhein foot gyi 😭</b>", parse_mode='html')
         finally:
             await bot.delete_message(chat_id=processing_message.chat.id, message_id=processing_message.message_id)
     else:
         await message.answer("<b>Please reply to an image with this command.</b>", parse_mode='html')
 
-os.system(python gemini.py)
+os.system("python gemini.py")
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
